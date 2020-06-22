@@ -1,0 +1,7 @@
+.header {
+  grid-column: span 2;
+  width: 100%;
+  background-color: #5EE80C;
+  border-bottom: 1px solid #e8e3e3;
+  height: 50px;
+}

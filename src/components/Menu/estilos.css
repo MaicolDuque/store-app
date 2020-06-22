@@ -1,0 +1,15 @@
+.menu {
+  position: relative;
+  /* grid-row: 1 / span 2;] */
+}
+
+.content-menu {
+  background-color:white;
+  height: 100vh;
+  position: fixed;
+  width: 17%;
+  box-shadow: 0px 0px 10px 0px #5EE80C;
+  color: #11B502;
+  font-weight: bold;
+  text-align: center;
+}
