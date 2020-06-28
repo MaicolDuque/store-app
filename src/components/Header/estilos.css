@@ -4,7 +4,8 @@
   box-shadow: 0px 0px 4px 0px #e0e0e0;  
   height: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  background-color: #ffffff;
 }
 
 .header-unauthenticate {  
@@ -13,9 +14,20 @@
   height: 50px;
   display: flex;
   justify-content: flex-end;
+  background-color: #ffffff;
 }
 
 .header-log {
   margin: 10px 30px;
   cursor: pointer;
 }
+
+.header-responsive {
+  width: 100%;
+  box-shadow: 0px 0px 4px 0px #e0e0e0;  
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+

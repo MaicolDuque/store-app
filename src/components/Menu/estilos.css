@@ -5,48 +5,44 @@
 
 .content-menu {
   background-color:white;
-  height: 90vh;
+  height: 93vh;
   position: fixed;
   width: 17%;
-  box-shadow: 0px 0px 4px 0px #e0e0e0;
-  color: #11B502;
+  border-right: 1px solid #e0e0e0;
+  color: #28992e;
   font-weight: bold;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
+.hide-menu {
+  display: none;
+}
+
+
+@media( max-width: 1300px){
+  .content-menu {
+    width: 20%;
+  }
+}
+
+@media( max-width: 900px){
+  .content-menu {
+    width: 28%;
+  }
+}
+
+@media( max-width: 700px){
+  .content-menu {
+    width: 40%;
+  }
+  .hide-menu {
+    display: none;
+  }
+}
 
 
 
-/* MENU HAMBUERGESA */
-#menu_on{
-	display: inline-block;
-	width:30px;
-	height: 20px;
-	position: relative;
-  z-index: 2;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-top: 7px;
-  margin-right: 7px;
-}
- 
-#menu_on span{
-	width: 100%;
-	height: 4px;
-	border-radius: 4px;
-	display: block;
-	position: absolute;
-	background: #11B502;
-	transition: all 0.25s ease; /* Propiedades a animar | Tiempo | Tipo animación*/
-	transform-origin : 0px 100%;
-}
- 
-#menu_on span:nth-child(2){
-	top: calc(50% - 2px);
-}
- 
-#menu_on span:nth-child(3){
-  bottom: 0;
-}
+
+

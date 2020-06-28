@@ -1,14 +1,9 @@
 import React from 'react'
 import './estilos.css'
 
-export default () => (
+export default ({classMenu}) => (
   <div className="menu">
-    <div className="content-menu">
-      {/* <span id="menu_on">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span> */}
+    <div className={classMenu}>      
       <h3>MENU</h3>      
     </div>
   </div>

@@ -4,8 +4,8 @@ const UsuarioContext = React.createContext();
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 const getUser = () => sleep(1000)
-  // .then(() => ({ nombre: 'Maicol Duque' }))
-  .then(() => null)
+  .then(() => ({ nombre: 'Maicol Duque' }))
+  // .then(() => null)
 
 function UsuarioProvider({children}) {
 
