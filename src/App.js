@@ -17,7 +17,7 @@ function UnauthenticateApp() {
 }
 
 function AuthenticateApp() {
-  const { user } = useUsuario();
+  const { user: { user } } = useUsuario();
   return (    
     <div className="App">
       <Header />
@@ -32,7 +32,7 @@ function AuthenticateApp() {
 }
 
 function App() {
-  const { user } = useUsuario();
+  const { user: { user } } = useUsuario();    
   return user ? <AuthenticateApp /> :  <UnauthenticateApp /> 
 }
 
