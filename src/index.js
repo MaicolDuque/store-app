@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import { UsuarioProvider } from './context/user-context'
+
+ReactDOM.render(  
+    <UsuarioProvider>
+      <App />
+    </UsuarioProvider>,
   document.getElementById('root')
 );
 

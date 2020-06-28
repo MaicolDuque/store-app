@@ -1,7 +1,21 @@
 .header {
-  grid-column: span 2;
+  grid-column: 2;
   width: 100%;
-  background-color: #5EE80C;
-  border-bottom: 1px solid #e8e3e3;
+  box-shadow: 0px 0px 4px 0px #e0e0e0;  
   height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-unauthenticate {  
+  width: 100%;
+  box-shadow: 0px 0px 4px 0px #e0e0e0;  
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-log {
+  margin: 10px 30px;
+  cursor: pointer;
 }

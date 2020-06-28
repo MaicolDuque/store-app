@@ -3,6 +3,6 @@ import './estilos.css'
 
 export default () => (
   <header className="header">
-    HEADER
+    <span className="header-log">Logout</span>
   </header>
 )

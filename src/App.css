@@ -1,8 +1,15 @@
 .App {
+  border-top: 4px solid #5EE80C;
   display: grid;
   grid-template-columns: 17% 1fr;
-  grid-template-rows: 2;
-  color: #11B502;
+  grid-template-rows: 2;  
+}
+
+.App-unauthenticate {
+  border-top: 4px solid #5EE80C;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2; 
 }
 
 .app-content {
