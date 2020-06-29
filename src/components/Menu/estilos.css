@@ -7,7 +7,7 @@
   background-color:white;
   height: 93vh;
   position: fixed;
-  width: 17%;
+  width: 100%;
   border-right: 1px solid #e0e0e0;
   color: #28992e;
   font-weight: bold;
@@ -21,21 +21,15 @@
 }
 
 
-@media( max-width: 1300px){
-  .content-menu {
-    width: 20%;
-  }
-}
-
 @media( max-width: 900px){
   .content-menu {
-    width: 28%;
+    width: 100%;
   }
 }
 
 @media( max-width: 700px){
   .content-menu {
-    width: 40%;
+    width: 100%;
   }
   .hide-menu {
     display: none;

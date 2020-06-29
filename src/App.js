@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import './App.css';
 import Header from './components/Header';
 import UnauthenticateHeader from './components/Header/unauthenticate';
 import Menu from './components/Menu';
 import Footer from './components/footer'
 import { useUsuario } from './context/user-context'
+import Home from './pages/home';
+import Users from './pages/users';
 
 function UnauthenticateApp() {
   return (
@@ -18,35 +22,29 @@ function UnauthenticateApp() {
 
 function AuthenticateApp() {
   const { user: { user } } = useUsuario();
-  const [ classApp, setClassApp ] = useState('App');
-  const [ classMenu, setClassMenu ] = useState('content-menu');
-  const [ widthScreen, setWidthScreen] = useState(window.screen.width);
+  const [ classApp, setClassApp ] = useState('app-responsive');
+  const [ classMenu, setClassMenu ] = useState({0: 'menu fade', 1: 'hide-menu'});
   const showHideMenu = (show) => { 
     if(show){
       setClassApp('App');
-      setClassMenu('content-menu');
+      setClassMenu({0: 'menu fade show', 1: 'content-menu'});
     }else{
       setClassApp('app-responsive');
-      setClassMenu('hide-menu');
+      setClassMenu({0: 'menu fade', 1: 'hide-menu'});      
     }    
-  }
+  }  
 
-  useEffect(() => {
-    console.log(widthScreen)
-    setWidthScreen(window.screen.width)
-    if(widthScreen < 800){
-      showHideMenu(false);
-    }
-  }, [widthScreen])
-  
-
-  return (    
+  return ( 
     <div className={classApp}>
       <Header showHideMenu={showHideMenu} />
       <Menu classMenu={classMenu} />
       <div className="app-content">
-        CONTENIDO 
-        { user.nombre }
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/users" component={Users} />
+          </Switch>
+        </BrowserRouter>
       </div>
       <Footer />
     </div>    

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './estilos.css'
 
 export default ({ showHideMenu }) => {  
-  const [ showMenu, setShowMenu ] = useState(true);
+  const [ showMenu, setShowMenu ] = useState(false);
   const [ classHeader, setClassHeader ] = useState('header');
   useEffect( () => {
-    showMenu ? setClassHeader('header') : setClassHeader('header-responsive')
+    showMenu ? setClassHeader('header-responsive ') : setClassHeader('header')
   }, [showMenu] );
 
   const handleShowHide = () => {

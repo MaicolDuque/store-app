@@ -24,15 +24,24 @@ body {
   border-top: 4px solid #28992e;
   display: grid;
   grid-template-columns: 0 1fr;
-  grid-template-rows: 2;   
+  grid-template-rows: 2;  
 }
 
+.fade {
+  transform: translateX(-100%);
+}
+
+.show {
+  transition: transform .9s;
+  transform: translateX(0);
+}
 
 @media( max-width: 1300px){
   .App {
     grid-template-columns: 20% 1fr;
   }
 }
+
 
 @media( max-width: 900px){
   .App {
@@ -42,7 +51,7 @@ body {
 
 @media( max-width: 700px){
   .App {
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 50% 1fr;
   }
 }
 
