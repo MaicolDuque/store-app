@@ -16,44 +16,44 @@ function UnauthenticateApp() {
       <UnauthenticateHeader />
       <p>Please Login!</p>
       <Footer />
-    </div> 
+    </div>
   )
 }
 
 function AuthenticateApp() {
   const { user: { user } } = useUsuario();
-  const [ classApp, setClassApp ] = useState('app-responsive');
-  const [ classMenu, setClassMenu ] = useState({0: 'menu fade', 1: 'hide-menu'});
-  const showHideMenu = (show) => { 
-    if(show){
+  const [classApp, setClassApp] = useState('app-responsive');
+  const [classMenu, setClassMenu] = useState({ 0: 'menu fade', 1: 'hide-menu' });
+  const showHideMenu = (show) => {
+    if (show) {
       setClassApp('App');
-      setClassMenu({0: 'menu fade show', 1: 'content-menu'});
-    }else{
+      setClassMenu({ 0: 'menu fade show', 1: 'content-menu' });
+    } else {
       setClassApp('app-responsive');
-      setClassMenu({0: 'menu fade', 1: 'hide-menu'});      
-    }    
-  }  
+      setClassMenu({ 0: 'menu fade', 1: 'hide-menu' });
+    }
+  }
 
-  return ( 
+  return (
     <div className={classApp}>
-      <Header showHideMenu={showHideMenu} />
-      <Menu classMenu={classMenu} />
-      <div className="app-content">
-        <BrowserRouter>
+      <BrowserRouter>
+        <Header showHideMenu={showHideMenu} />
+        <Menu classMenu={classMenu} />
+        <div className="app-content">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={Users} />
           </Switch>
-        </BrowserRouter>
-      </div>
-      <Footer />
-    </div>    
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </div>
   )
 }
 
 function App() {
-  const { user: { user } } = useUsuario();    
-  return user ? <AuthenticateApp /> :  <UnauthenticateApp /> 
+  const { user: { user } } = useUsuario();
+  return user ? <AuthenticateApp /> : <UnauthenticateApp />
 }
 
 export default App;
