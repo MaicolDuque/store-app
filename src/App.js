@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -6,9 +6,13 @@ import Header from './components/Header';
 import UnauthenticateHeader from './components/Header/unauthenticate';
 import Menu from './components/Menu';
 import Footer from './components/footer'
-import { useUsuario } from './context/user-context'
 import Home from './pages/home';
-import Users from './pages/users';
+import Spinner from './components/Spinner'
+import { useUsuario } from './context/user-context'
+
+// Import with lazy loading
+const Users = React.lazy(() => import('./pages/users'));
+
 
 function UnauthenticateApp() {
   return (
@@ -39,13 +43,15 @@ function AuthenticateApp() {
       <BrowserRouter>
         <Header showHideMenu={showHideMenu} />
         <Menu classMenu={classMenu} />
-        <div className="app-content">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/users" component={Users} />
-          </Switch>
-        </div>
-        <Footer />
+        <Suspense fallback={<Spinner />}>
+          <div className="app-content">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/users" component={Users} />
+            </Switch>
+          </div>
+          <Footer />
+        </Suspense>
       </BrowserRouter>
     </div>
   )

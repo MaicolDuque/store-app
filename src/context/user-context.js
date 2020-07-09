@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Spinner from '../components/Spinner';
 
 const UsuarioContext = React.createContext();
 
@@ -23,7 +24,7 @@ function UsuarioProvider({children}) {
   return (
     <UsuarioContext.Provider value={{ user, setState }}  >
       {user.status === 'pending' ? (
-        'Loading...'
+        <Spinner />
       ) : user.status === 'error' ? (
         <div>
           Oh no
