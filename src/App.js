@@ -2,12 +2,17 @@ import React, { useState, Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
+
 import Header from './components/Header';
 import UnauthenticateHeader from './components/Header/unauthenticate';
 import Menu from './components/Menu';
 import Footer from './components/footer'
-import Home from './pages/home';
 import Spinner from './components/Spinner'
+
+import Home from './pages/home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 import { useUsuario } from './context/user-context'
 
 // Import with lazy loading
@@ -17,9 +22,15 @@ const Users = React.lazy(() => import('./pages/users'));
 function UnauthenticateApp() {
   return (
     <div className="App-unauthenticate">
-      <UnauthenticateHeader />
-      <p>Please Login!</p>
-      <Footer />
+      <BrowserRouter>
+        <UnauthenticateHeader />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+        </Switch>        
+        <Footer />
+      </BrowserRouter>
     </div>
   )
 }

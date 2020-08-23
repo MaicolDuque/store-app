@@ -5,12 +5,12 @@ const UsuarioContext = React.createContext();
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 const getUser = () => sleep(1000)
-  .then(() => ({ nombre: 'Maicol Duque' }))
-  // .then(() => null)
+  // .then(() => ({ nombre: 'Maicol Duque' }))
+  .then(() => null)
 
 function UsuarioProvider({children}) {
 
-  const [ user, setState ] = useState({
+  const [ user, setUser ] = useState({
     status: 'pending',
     error: null,
     user: null,
@@ -18,11 +18,11 @@ function UsuarioProvider({children}) {
 
   useEffect(() => {
     getUser()
-      .then(user => setState({status: 'success', error: null, user }) )
+      .then(user => setUser({status: 'success', error: null, user }) )
   }, [])
 
   return (
-    <UsuarioContext.Provider value={{ user, setState }}  >
+    <UsuarioContext.Provider value={{ user, setUser }}  >
       {user.status === 'pending' ? (
         <Spinner />
       ) : user.status === 'error' ? (

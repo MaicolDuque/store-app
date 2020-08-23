@@ -20,7 +20,17 @@
 
 .header-log {
   margin: 10px 30px;
+  color: #838383;
   cursor: pointer;
+}
+
+.header-log a {
+  text-decoration: none;
+  color: #838383;
+}
+
+.header-log a:hover { 
+  color: #28992e;
 }
 
 .header-responsive {
