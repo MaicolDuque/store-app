@@ -3,7 +3,7 @@ import './estilos.css'
 import { useUsuario } from '../../context/user-context';
 
 export default ({ showHideMenu }) => {
-  const { user, setUser } = useUsuario();
+  const { logout } = useUsuario();
   const [showMenu, setShowMenu] = useState(false);
   const [classHeader, setClassHeader] = useState('header');
   useEffect(() => {
@@ -16,7 +16,7 @@ export default ({ showHideMenu }) => {
   }  
 
   const logoutUser = () => {    
-    setUser({status: 'success', error: null, user: null } );    
+    logout();    
   }
 
   return (

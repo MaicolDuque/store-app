@@ -6,7 +6,6 @@ import Spinner from '../components/Spinner';
 const UsuarioContext = React.createContext();
 
 function UsuarioProvider({ children }) {
-
   const [token, setToken] = useState(
     () => window.sessionStorage.getItem('token')
   )
@@ -16,8 +15,6 @@ function UsuarioProvider({ children }) {
     error: null,
     user: token,
   });
-
- 
 
   const login = async ({ email, password }) => {
     setUser({ ...user, status: 'pending' })
@@ -50,9 +47,7 @@ function UsuarioProvider({ children }) {
       user, 
       setUser 
     }}  >
-      { token ? (
-        children
-      ): user.status === 'pending' ? (
+      {user.status === 'pending' ? (
         <Spinner />
       ) : user.status === 'error' ? (
         <div>
@@ -61,8 +56,9 @@ function UsuarioProvider({ children }) {
             <pre>{user.error.message}</pre>
           </div>
         </div>
-      ) : null }
-      
+      ) : (
+            children
+      )}
     </UsuarioContext.Provider>
   )
 }
