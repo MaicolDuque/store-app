@@ -29,7 +29,7 @@ export default () => {
             <span></span>
           </div>
           <div>
-            <input type="text" placeholder="Password" name="password" onChange={handleChange} className="input-login"></input>
+            <input type="password" placeholder="Password" name="password" onChange={handleChange} className="input-login"></input>
             <span></span>
           </div>
           <div>

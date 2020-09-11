@@ -9,7 +9,7 @@ function UsuarioProvider({ children }) {
   const [token, setToken] = useState(
     () => window.sessionStorage.getItem('token')
   )
-  
+
   const [user, setUser] = useState({
     status: 'success',
     error: null,
@@ -18,34 +18,47 @@ function UsuarioProvider({ children }) {
 
   const login = async ({ email, password }) => {
     setUser({ ...user, status: 'pending' })
-    try {
-      const res   = await LoginService(email, password);
-      const json  = await res.json();
-      if (!res.ok) return setUser({ status: 'error', error: { message: json.message } })
-      setUser({ status: 'success', error: null, user: json });
-      setToken(json.token);
-      window.sessionStorage.setItem('token', json.token);
-    } catch (error) {
-      window.sessionStorage.removeItem('jwt')
-      setUser({ user: null, status: 'error', error: { message: error.toString() } })
-    }
+    LoginService({
+      email,
+      password,
+      cbSuccess: (json) => {
+        setUser({ status: 'success', error: null, user: json });
+        setToken(json.token);
+        window.sessionStorage.setItem('token', json.token);
+      },
+      cbError: (error) => {
+        window.sessionStorage.removeItem('jwt')
+        setUser({ user: null, status: 'error', error: { message: error.toString() } })
+      }
+    })
+    // try {
+    //   const res = await LoginService(email, password);
+    //   const json = await res.json();
+    //   if (!res.ok) return setUser({ status: 'error', error: { message: json.message } })
+    //   setUser({ status: 'success', error: null, user: json });
+    //   setToken(json.token);
+    //   window.sessionStorage.setItem('token', json.token);
+    // } catch (error) {
+    //   window.sessionStorage.removeItem('jwt')
+    //   setUser({ user: null, status: 'error', error: { message: error.toString() } })
+    // }
   }
 
   const register = () => { } // register the user
 
-  const logout = () => { 
+  const logout = () => {
     window.sessionStorage.removeItem('token');
     setToken(null);
     setUser({ status: 'success', error: null, user: null, });
   }
 
   return (
-    <UsuarioContext.Provider value={{ 
-      token: Boolean(token), 
-      login, 
+    <UsuarioContext.Provider value={{
+      token: Boolean(token),
+      login,
       logout,
-      user, 
-      setUser 
+      user,
+      setUser
     }}  >
       {user.status === 'pending' ? (
         <Spinner />
@@ -58,7 +71,7 @@ function UsuarioProvider({ children }) {
         </div>
       ) : (
             children
-      )}
+          )}
     </UsuarioContext.Provider>
   )
 }

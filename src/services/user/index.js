@@ -1,13 +1,18 @@
+import { apiFetch } from '../apiFetch';
 
-const LoginService = async (email, password) => {
-  const res = await fetch('http://localhost:4000/auth/local', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
+const LoginService = async ({ email, password, cbSuccess, cbError }) => {
+  apiFetch({
+    URL: 'auth/local',
+    options: {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
     },
-    body: JSON.stringify({email, password})
+    cbSuccess: (data) => cbSuccess(data),
+    cbError: (error) => cbError(error)
   })
-  return res;
 }
 
 export {
